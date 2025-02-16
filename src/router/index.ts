@@ -1,21 +1,21 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import ProductsPage from '../pages/Products.vue';
-import CartPage from '../pages/Cart.vue';
-import CheckoutPage from '../pages/Checkout.vue';
+import { createRouter, createWebHistory } from "vue-router";
+import ProductsPage from "../pages/Products.vue";
+import CartPage from "../pages/Cart.vue";
+import CheckoutPage from "../pages/Checkout.vue";
 
 export const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: '/',
+      path: "/",
       component: ProductsPage,
     },
     {
-      path: '/cart',
+      path: "/cart",
       component: CartPage,
     },
     {
-      path: '/checkout',
+      path: "/checkout",
       component: CheckoutPage,
     },
   ],

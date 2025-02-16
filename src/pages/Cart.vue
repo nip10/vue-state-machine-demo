@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { useCart } from '../composables/useCart';
-import { Button } from '@/components/ui/button';
-import { useRouter } from 'vue-router';
+import { useCart } from "../composables/useCart";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "vue-router";
 
 const router = useRouter();
 const { items, total, removeFromCart, updateQuantity } = useCart();
 
 const handleCheckout = () => {
-  router.push('/checkout');
+  router.push("/checkout");
 };
 </script>
 

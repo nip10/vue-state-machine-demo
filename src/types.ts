@@ -1,4 +1,3 @@
-// types/index.ts
 export interface Product {
   id: number;
   name: string;
@@ -12,18 +11,22 @@ export interface CartItem extends Product {
 }
 
 export type CartState =
-  | 'idle'
-  | 'addingItem'
-  | 'error'
-  | 'checkingOut'
-  | 'checkoutSuccess'
-  | 'checkoutError';
+  | "idle"
+  | "addingItem"
+  | "error"
+  | "checkingOut"
+  | "checkoutSuccess"
+  | "checkoutError";
 
 export type CartEvent =
-  | { type: 'ADD_ITEM'; item: Product }
-  | { type: 'REMOVE_ITEM'; id: number }
-  | { type: 'UPDATE_QUANTITY'; id: number; quantity: number }
-  | { type: 'CHECKOUT' }
-  | { type: 'RETRY' }
-  | { type: 'SUCCESS' }
-  | { type: 'ERROR'; message: string };
+  | { type: "ADD_ITEM"; item: Product }
+  | { type: "REMOVE_ITEM"; id: number }
+  | {
+      type: "UPDATE_QUANTITY";
+      id: number;
+      quantity: number;
+    }
+  | { type: "CHECKOUT" }
+  | { type: "RETRY" }
+  | { type: "SUCCESS" }
+  | { type: "ERROR"; message: string };

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useCart } from '../composables/useCart';
-import { Button } from '@/components/ui/button';
-import { useRouter } from 'vue-router';
-import { watch } from 'vue';
+import { useCart } from "../composables/useCart";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "vue-router";
+import { watch } from "vue";
 
 const router = useRouter();
 const { state, total, checkout, error } = useCart();
@@ -10,8 +10,8 @@ const { state, total, checkout, error } = useCart();
 watch(
   () => state.value,
   (newState) => {
-    if (newState === 'checkoutSuccess') {
-      router.push('/success');
+    if (newState === "checkoutSuccess") {
+      router.push("/success");
     }
   }
 );
@@ -42,7 +42,7 @@ watch(
         :disabled="state === 'checkingOut'"
         class="w-full"
       >
-        {{ state === 'checkingOut' ? 'Processing...' : 'Complete Order' }}
+        {{ state === "checkingOut" ? "Processing..." : "Complete Order" }}
       </Button>
     </div>
   </div>
