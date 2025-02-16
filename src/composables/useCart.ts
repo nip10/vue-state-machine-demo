@@ -1,5 +1,5 @@
 import { ref, computed } from "vue";
-import { CartMachine } from "../machines/cartMachine";
+import { CartMachine } from "../machines/cart-machine";
 import type { Product, CartEvent } from "../types";
 
 // Create a single instance of the machine that persists across components
