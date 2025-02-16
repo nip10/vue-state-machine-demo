@@ -20,7 +20,7 @@ export function useCart() {
 
   // Mock API calls
   const mockApi = {
-    addItem: async (item: Product) => {
+    addItem: async (_: Product) => {
       await new Promise((resolve) => setTimeout(resolve, 500));
       // Simulate random failures
       if (Math.random() > 0.9) {
