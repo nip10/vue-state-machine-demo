@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@neoconfetti/vue": "^2.2.1",
     "@xstate/vue": "^4.0.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
