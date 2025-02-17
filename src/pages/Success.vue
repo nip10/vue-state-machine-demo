@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { onUnmounted } from "vue";
-import { useRouter } from "vue-router";
 import { CheckCircle } from "lucide-vue-next";
 import { vConfetti } from "@neoconfetti/vue";
 import { Button } from "@/components/ui/button";

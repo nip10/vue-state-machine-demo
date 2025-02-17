@@ -11,9 +11,9 @@ const { items, total, removeFromCart, updateQuantity } = useCart();
 
     <div v-if="items.length === 0" class="text-center py-8">
       <p class="text-gray-500">Your cart is empty</p>
-      <Button @click="router.push('/')" class="mt-4">
-        Continue Shopping
-      </Button>
+      <RouterLink to="/">
+        <Button class="mt-4"> Continue Shopping </Button>
+      </RouterLink>
     </div>
 
     <div v-else class="grid grid-cols-1 lg:grid-cols-3 gap-6">
