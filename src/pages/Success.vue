@@ -1,10 +1,17 @@
 <script setup lang="ts">
+import { onUnmounted } from "vue";
 import { useRouter } from "vue-router";
-import { Button } from "@/components/ui/button";
-import { vConfetti } from "@neoconfetti/vue";
 import { CheckCircle } from "lucide-vue-next";
+import { vConfetti } from "@neoconfetti/vue";
+import { Button } from "@/components/ui/button";
+import { useCart } from "@/composables/useCart";
 
-const router = useRouter();
+const { reset } = useCart();
+
+onUnmounted(() => {
+  // Reset state machine
+  reset();
+});
 </script>
 
 <template>
@@ -23,9 +30,9 @@ const router = useRouter();
       <p class="text-gray-600">Thank you for your purchase</p>
 
       <!-- Action Button -->
-      <Button @click="router.push('/')" class="mt-8">
-        Continue Shopping
-      </Button>
+      <RouterLink to="/">
+        <Button class="mt-8"> Continue Shopping </Button>
+      </RouterLink>
     </div>
   </div>
 </template>

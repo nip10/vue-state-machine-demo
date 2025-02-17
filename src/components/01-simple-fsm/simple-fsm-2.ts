@@ -9,20 +9,25 @@ interface Product {
   image: string;
 }
 
-type CartState = "idle" | "addingItem" | "error" | "checkingOut";
+export type CartState = "idle" | "addingItem" | "error" | "checkingOut";
 
-type CartEvent =
+export type CartEvent =
   | { type: "ADD_ITEM"; item: Product }
   | { type: "SUCCESS" }
   | { type: "ERROR" };
+
+export type CartContext = {
+  items: Product[];
+};
 
 /**
  *  THE ACTUAL MACHINE IMPLEMENTATION
  **/
 export class CartMachine {
   state: CartState = "idle";
-  items: Product[] = [];
-
+  context: CartContext = {
+    items: [],
+  };
   dispatch(event: CartEvent) {
     switch (this.state) {
       case "idle":

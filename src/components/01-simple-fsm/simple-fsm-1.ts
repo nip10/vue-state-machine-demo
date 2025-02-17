@@ -15,3 +15,7 @@ export type CartEvent =
   | { type: "ADD_ITEM"; item: Product }
   | { type: "SUCCESS" }
   | { type: "ERROR" };
+
+export type CartContext = {
+  items: Product[];
+};

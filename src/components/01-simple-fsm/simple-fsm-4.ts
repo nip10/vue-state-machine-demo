@@ -1,3 +1,9 @@
+// DEMO SETUP - IGNORE
+import { computed, ref } from "vue";
+const api = {
+  async addItem(_: Product) {},
+};
+
 /**
  *  TYPES
  **/
@@ -82,4 +88,25 @@ export class CartMachine {
       transition.action?.(this.context, event);
     }
   }
+}
+
+/**
+ *  COMPOSABLE THAT USES THE MACHINE
+ **/
+const machine = ref(new CartMachine());
+
+export function useCart() {
+  return {
+    state: computed(() => machine.value.state),
+    items: computed(() => machine.value.context.items),
+    addItem: async (product: Product) => {
+      machine.value.dispatch({ type: "ADD_ITEM", item: product });
+      try {
+        await api.addItem(product);
+        machine.value.dispatch({ type: "SUCCESS" });
+      } catch {
+        machine.value.dispatch({ type: "ERROR" });
+      }
+    },
+  };
 }

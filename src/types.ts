@@ -30,3 +30,23 @@ export type CartEvent =
   | { type: "RETRY" }
   | { type: "SUCCESS" }
   | { type: "ERROR"; message: string };
+
+export type CartContext = {
+  items: CartItem[];
+  pendingItem: CartItem | undefined;
+  error: string | undefined;
+};
+
+export type Transitions = {
+  [State in CartState]: {
+    on: {
+      [EventType in CartEvent["type"]]?: {
+        target: CartState;
+        action?: (
+          context: CartContext,
+          event: Extract<CartEvent, { type: EventType }>
+        ) => void;
+      };
+    };
+  };
+};

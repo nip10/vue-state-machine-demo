@@ -1,33 +1,15 @@
-import type { CartState, CartEvent, CartItem } from "../types";
+import type { CartState, CartEvent, CartContext, Transitions } from "../types";
 import { useDebug } from "@/composables/useDebug";
 
 const debug = useDebug();
 
-type Transitions = {
-  [State in CartState]: {
-    on: {
-      [EventType in CartEvent["type"]]?: {
-        target: CartState;
-        action?: (
-          context: {
-            items: CartItem[];
-            error?: string;
-            pendingItem?: CartItem;
-          },
-          event: Extract<CartEvent, { type: EventType }>
-        ) => void;
-      };
-    };
-  };
-};
-
 export class CartMachine {
   state: CartState = "idle";
 
-  context = {
-    items: [] as CartItem[],
-    pendingItem: undefined as CartItem | undefined,
-    error: undefined as string | undefined,
+  context: CartContext = {
+    items: [],
+    pendingItem: undefined,
+    error: undefined,
   };
 
   private transitions: Transitions = {

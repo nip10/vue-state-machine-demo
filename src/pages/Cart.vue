@@ -1,14 +1,8 @@
 <script setup lang="ts">
-import { useCart } from "../composables/useCart";
+import { useCart } from "@/composables/useCart";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "vue-router";
 
-const router = useRouter();
 const { items, total, removeFromCart, updateQuantity } = useCart();
-
-const handleCheckout = () => {
-  router.push("/checkout");
-};
 </script>
 
 <template>
@@ -72,9 +66,9 @@ const handleCheckout = () => {
             <span>Total:</span>
             <span class="font-semibold">${{ total.toFixed(2) }}</span>
           </div>
-          <Button @click="handleCheckout" class="w-full">
-            Proceed to Checkout
-          </Button>
+          <RouterLink to="/checkout">
+            <Button class="w-full"> Checkout </Button>
+          </RouterLink>
         </div>
       </div>
     </div>
